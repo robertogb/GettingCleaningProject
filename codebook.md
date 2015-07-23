@@ -54,11 +54,11 @@ The R script called run_analysis.R does the following to obtain and tidy the dat
 4. Adds the columns with subject and activity to the data set.
 5. Uses descriptive activity names to name the activities in the data set.
 6. Transforms the data set from a wide format (81 columns: 79 features plus subject and activity) into a long format (4 columns: subject, activity, feature and value).
-7. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+7. Creates a second, independent tidy data set with the average of each feature for each activity and each subject.
 
 
 ###Cleaning of the data
-Short, high-level description of what the cleaning script does. [link to the readme document that describes the code in greater detail]()
+Short, high-level description of what the cleaning script does. [link to the readme document that describes the code in greater detail](README.md)
 
 ##Description of the variables in the tiny_data.txt file
 General description of the file including:
