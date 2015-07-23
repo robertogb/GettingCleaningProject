@@ -66,6 +66,8 @@ selectCols <- which(as.vector(hasMeanStd, mode = "logical"))
 dataset <- dataset[, selectCols]
 
 # (Step 4) Appropriately labels the data set with descriptive variable names. 
+# Duplicated names exist in features, so it is better first to select the
+# columns and then to rename them.
 names(dataset) <- featureLabels[selectCols,"Feature"]
 
 
@@ -88,17 +90,3 @@ dataset %>%
     summarise(Mean = mean(Value, na.rm = TRUE)) %>%
     write.table(file = "tiny dataset.txt", row.names = FALSE)
 
-
-kk <- dataset[seq(1, 10299, 1000),]
-skk <- seq_along(kk[,1])
-sujId <- subjects[skk,]
-
-kk %>%
-#    select(selectCols) %>% # (Step 2)
-    mutate(Subject = subjects$SubjectId[seq(1, 10299, 1000)], ActivityId = activity$ActivityId[seq(1, 10299, 1000)]) %>%
-    join(activityLabels, by = "ActivityId") %>% # (Step 3) Uses descriptive activity names to name the activities in the data set
-    select(Subject, Activity, matches("mean|std", ignore.case = FALSE)) %>%
-    gather(Feature, Value, -(Subject:Activity)) %>% # "long" form
-    group_by(Subject, Activity, Feature) %>%
-    summarise(Mean = mean(Value, na.rm = TRUE)) %>%
-    write.table(file = "tiny dataset.txt", row.names = FALSE)

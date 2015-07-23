@@ -40,7 +40,7 @@ Under both directories there is another subdirectory 'Inertial Signals/' which c
 
 Number of Instances | Number of Attributes
 --------------------|----------------------
- 10299 |  561+2
+              10299 |                561+2
 
 
 - Features are normalized and bounded within [-1,1].
