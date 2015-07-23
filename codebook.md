@@ -2,7 +2,7 @@
 title: "codebook.md"
 author: "Roberto Garrote Bernal"
 date: "23 de julio de 2015"
-output: word_document
+output: html_document
 ---
 
 ## Project Description
@@ -37,6 +37,11 @@ The structure in those directories is similar:
 Under both directories there is another subdirectory 'Inertial Signals/' which contain data not used in this project. 
 
 ###Notes on the original (raw) data 
+---
+Number of Instances: 10299
+Number of Attributes: 561+2
+---
+
 - Features are normalized and bounded within [-1,1].
 - Each feature vector is a row on the text file.
 
