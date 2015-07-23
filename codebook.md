@@ -6,30 +6,31 @@ output: word_document
 ---
 
 ## Project Description
-The objective is to prepare tiny data from the raw data, so it can be used for later analysis
+The objective is to prepare tiny data from the raw data, so it can be used for later analysis.
 
 ##Study design and data processing
 
 ###Collection of the raw data
 The original data is collected from the web page
+
 https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
+
 The downloaded file is compressed in zip format.
-Once uncompressed, the data is structured in a directory named UCI HAR Dataset.
-Under this directory, there are four files:
-- 'README.txt': Describes the data set
+Once uncompressed, the data is structured in a directory named UCI HAR Dataset. Under this directory, there are four files:
+- 'README.txt': Describes the data set.
 - 'features_info.txt': Shows information about the variables used on the feature vector.
 - 'features.txt': List of all features.
 - 'activity_labels.txt': Links the activity labels with their activity code.
 
-The data set is splitted in two separate groups, one for training and one for testing. Esach group of data is stored in the corresponding directory:
+The data set is splitted in two separate groups, one for training and one for testing. Each group of data is stored in its corresponding directory:
 - 'train/'
 - 'test/'
 
 The structure in those directories is similar:
-- 'train/X_train.txt': Training set where is row is an experiment for one subject and one activity. It contains one value for each of the 561 features.
+- 'train/X_train.txt': Training set where each row is an experiment for one subject and one activity. It contains one value for each of the 561 features.
 - 'train/y_train.txt': Each row has the activity id of the corresponding row in X_train.txt.
 - 'train/subject_train.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
-- 'test/X_test.txt': Test set where is row is an experiment for one subject and one activity. It contains one value for each of the 561 features.
+- 'test/X_test.txt': Test set where each row is an experiment for one subject and one activity. It contains one value for each of the 561 features.
 - 'test/y_test.txt': Each row has the activity id of the corresponding row in X_test.txt.
 - 'test/subject_test.txt': Each row identifies the subject who performed the activity for each window sample. Its range is from 1 to 30. 
 
@@ -42,14 +43,18 @@ Under both directories there is another subdirectory 'Inertial Signals/' which c
 ##Creating the tidy datafile
 
 ###Guide to create the tidy data file
-The R script called run_analysis.R does the following to tidy the data:
-. Merges the training and the test sets to create one data set.
-. Extracts only the measurements on the mean and standard deviation for each measurement. 
-. Appropriately labels the data set with descriptive variable names. 
-. Adds the columns with subject and activity to the data set in one table.
-. Uses descriptive activity names to name the activities in the data set.
-. Transform the data set from a wide format (79 features plus subject and activity) into a long format (Gather 
-. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+The R script called run_analysis.R does the following to obtain and tidy the data:
+
+1. Downloads the file from the web if it does not exist.
+2. Unzips the file, so the data folder structure is created.
+2. Reads the different files into data sets.
+3. Merges the training and the test sets to create one data set.
+2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+3. Appropriately labels the data set with descriptive variable names. 
+4. Adds the columns with subject and activity to the data set.
+5. Uses descriptive activity names to name the activities in the data set.
+6. Transforms the data set from a wide format (81 columns: 79 features plus subject and activity) into a long format (4 columns: subject, activity, feature and value).
+7. Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 
 ###Cleaning of the data
