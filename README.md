@@ -85,7 +85,7 @@ dataset <- dataset %>%
     mutate(Subject = subjects$SubjectId, ActivityId = activity$ActivityId) %>% ...
   ```
 5. Uses descriptive activity names to name the activities in the data set, so activity label is added to activity id.
-6. 
+
   ```{r}
 ... %>% join(activityLabels, by = "ActivityId") %>% 
         select(Subject, Activity, 1:79) %>% ...
