@@ -81,12 +81,15 @@ library(tidyr)
 library(plyr)
 library(dplyr)
 
-dataset %>%
+dataset <- dataset %>%
     mutate(Subject = subjects$SubjectId, ActivityId = activity$ActivityId) %>%
     join(activityLabels, by = "ActivityId") %>% # (Step 3) Uses descriptive activity names to name the activities in the data set
     select(Subject, Activity, 1:79) %>%
-    gather(Feature, Value, -(Subject:Activity)) %>% # "long" form
+    gather(Feature, Value, -(Subject:Activity)) # "long" form
+
+tinydata <- dataset %>%
     group_by(Subject, Activity, Feature) %>%
-    summarise(Mean = mean(Value, na.rm = TRUE)) %>%
-    write.table(file = "tiny dataset.txt", row.names = FALSE)
+    summarise(Mean = mean(Value, na.rm = TRUE))
+
+tinydata %>% write.table(file = "tiny dataset.txt", row.names = FALSE)
 

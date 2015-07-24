@@ -2,7 +2,9 @@
 title: "codebook.md"
 author: "Roberto Garrote Bernal"
 date: "23 de julio de 2015"
-output: html_document
+output:
+  html_document:
+    keep_md: yes
 ---
 
 ## Project Description
@@ -38,7 +40,7 @@ Under both directories there is another subdirectory 'Inertial Signals/' which c
 
 ###Notes on the original (raw) data 
 
-Number of Instances | Number of Attributes
+Number of Instances | Number of Variables
 --------------------|----------------------
               10299 |                561+2
 
@@ -62,15 +64,33 @@ The R script called run_analysis.R does the following to obtain and tidy the dat
 6. Transforms the data set from a wide format (81 columns: 79 features plus subject and activity) into a long format (4 columns: subject, activity, feature and value).
 7. Creates a second, independent tidy data set with the average of each feature for each activity and each subject.
 
+A detailed description of what the cleaning script does is provided in the [README document](README.md)
 
-###Cleaning of the data
-Short, high-level description of what the cleaning script does. [link to the readme document that describes the code in greater detail](README.md)
-
-##Description of the variables in the tiny_data.txt file
-General description of the file including:
+##Description of the variables in the 'tiny dataset.txt' file
+We provide here a general description of the file including:
  - Dimensions of the dataset
  - Summary of the data
  - Variables present in the dataset
+ 
+###Dimensions of the dataset
+ 
+ Number of Instances | Number of Variables |  Size
+---------------------|---------------------|---------
+               14220 |                4     | 290752 bytes
+
+###Summary of the data
+
+###Variables in the dataset
+
+Variable | Class | Values/Levels | Unit of measurement
+---------|-------|---------------|---------------------
+Subject | integer | 1:30 | none
+Activity | Factor | WALKING
+WALKING_UPSTAIRS
+WALKING_DOWNSTAIRS
+SITTING
+STANDING
+LAYING | none
 
 (you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
 
