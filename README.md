@@ -82,10 +82,24 @@ names(dataset) <- featureLabels[selectCols,"Feature"]
 
   ```{r}
 dataset <- dataset %>%
-    mutate(Subject = subjects$SubjectId, ActivityId = activity$ActivityId) %>%
-  ´´´
-5. Uses descriptive activity names to name the activities in the data set.
-6. Transforms the data set from a wide format (81 columns: 79 features plus subject and activity) into a long format (4 columns: subject, activity, feature and value).
-7. Creates a second, independent tidy data set with the average of each feature for each activity and each subject.
+    mutate(Subject = subjects$SubjectId, ActivityId = activity$ActivityId) %>% ...
+  ```
+5. Uses descriptive activity names to name the activities in the data set, so activity label is added to activity id
 
-#Script usage
+  ```{r}
+... %>% join(activityLabels, by = "ActivityId") %>% 
+        select(Subject, Activity, 1:79) %>% ...
+  ```
+6. Transforms the data set from a wide format (81 columns: 79 features plus subject and activity) into a long format (4 columns: subject, activity, feature and value).
+  ```{r}
+... %>% gather(Feature, Value, -(Subject:Activity))
+  ```
+7. Creates a second, independent tidy data set with the average of each feature for each activity and each subject.
+  ```{r}
+tinydata <- dataset %>%
+    group_by(Subject, Activity, Feature) %>%
+    summarise(Mean = mean(Value, na.rm = TRUE))
+
+tinydata %>% write.table(file = "tiny dataset.txt", row.names = FALSE)
+  ```
+
