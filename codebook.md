@@ -76,18 +76,30 @@ We provide here a general description of the file including:
  
  Number of Instances | Number of Variables |  Size
 ---------------------|---------------------|---------
-               14220 |                4     | 290752 bytes
+               14220 |                4    | 290752 bytes
 
 ###Summary of the data
 
+```{r}
+summary(tinydata)
+    Subject                   Activity                 Feature           Mean         
+ Min.   : 1.0   LAYING            :2370   tBodyAcc-mean()-X:  180   Min.   :-0.99767  
+ 1st Qu.: 8.0   SITTING           :2370   tBodyAcc-mean()-Y:  180   1st Qu.:-0.95242  
+ Median :15.5   STANDING          :2370   tBodyAcc-mean()-Z:  180   Median :-0.34232  
+ Mean   :15.5   WALKING           :2370   tBodyAcc-std()-X :  180   Mean   :-0.41241  
+ 3rd Qu.:23.0   WALKING_DOWNSTAIRS:2370   tBodyAcc-std()-Y :  180   3rd Qu.:-0.03654  
+ Max.   :30.0   WALKING_UPSTAIRS  :2370   tBodyAcc-std()-Z :  180   Max.   : 0.97451  
+                                          (Other)          :13140                     
+```
+
 ###Variables in the dataset
 
-Variable | Class | Values/Levels | Unit of measurement
----------|-------|---------------|---------------------
-Subject | integer | 1:30 | none
-Activity | Factor | WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING | none
-Feature | Factor | See below | none
-Mean    | number | [-1,1] | no specified in the raw data
+Variable | Short description | Class | Values/Levels | Unit of measurement
+---------|-------------------|-------|---------------|---------------------
+Subject | Identifier of the subject who carried out the experiment | integer | 1:30 | none
+Activity | Activity label | Factor with 6 levels| WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING | none
+Feature | Characteristic to be measured | Factor with 79 levels | See below | none
+Mean    | Mean of the values for the subject, activity and feature | number | [-1,1] | no specified in the raw data
 
 ####Levels of Feature
  [1] "tBodyAcc-mean()-X"               "tBodyAcc-mean()-Y"              
@@ -131,38 +143,3 @@ Mean    | number | [-1,1] | no specified in the raw data
 [77] "fBodyBodyGyroJerkMag-mean()"     "fBodyBodyGyroJerkMag-std()"     
 [79] "fBodyBodyGyroJerkMag-meanFreq()"
 
-###Variable 1 (repeat this section for all variables in the dataset)
-Short description of what the variable describes.
-
-Some information on the variable including:
- - Class of the variable
- - Unique values/levels of the variable
- - Unit of measurement (if no unit of measurement list this as well)
- - In case names follow some schema, describe how entries were constructed (for example time-body-gyroscope-z has 4 levels of descriptors. Describe these 4 levels). 
-
-(you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
-
-####Notes on variable 1:
-If available, some additional notes on the variable not covered elsewehere. If no notes are present leave this section out.
-
-##Sources
-Sources you used if any, otherise leave out.
-
-##Annex
-If you used any code in the codebook that had the echo=FALSE attribute post this here (make sure you set the results parameter to 'hide' as you do not want the results to show again)
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r}
-summary(cars)
-```
-
-You can also embed plots, for example:
-
-```{r, echo=FALSE}
-plot(cars)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
