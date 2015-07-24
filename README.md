@@ -90,6 +90,7 @@ dataset <- dataset %>%
         select(Subject, Activity, 1:79) %>% ...
   ```
 6. Transforms the data set from a wide format (81 columns: 79 features plus subject and activity) into a long format (4 columns: subject, activity, feature and value).
+
   ```{r}
 ... %>% gather(Feature, Value, -(Subject:Activity))
   ```
