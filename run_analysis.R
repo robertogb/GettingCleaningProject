@@ -54,7 +54,7 @@ rm(activity2)
 
 # (Step 2) Extracts only the measurements on the mean and standard deviation
 # for each measurement. 
-# I'm just considering only the measurements which represent the mean or the
+# I'm just considering the measurements which represent the mean or the
 # standard deviation of other measurements, and not the measurements which use
 # the mean or standard deviation of other measurements, like for example
 # "angle(X, gravityMean)". 
@@ -71,11 +71,6 @@ dataset <- dataset[, selectCols]
 names(dataset) <- featureLabels[selectCols,"Feature"]
 
 
-# valid_column_names <- make.names(names=featureLabels$Feature, unique=TRUE, allow_ = TRUE)
-# names(dataset) <- valid_column_names
-
-# Step 5. Creates a second, independent tidy data set with the average of 
-# each variable for each activity and each subject.
 
 library(tidyr)
 library(plyr)
@@ -87,9 +82,11 @@ dataset <- dataset %>%
     select(Subject, Activity, 1:79) %>%
     gather(Feature, Value, -(Subject:Activity)) # "long" form
 
-tinydata <- dataset %>%
+# Step 5. Creates a second, independent tidy data set with the average of 
+# each variable for each activity and each subject.
+tidydata <- dataset %>%
     group_by(Subject, Activity, Feature) %>%
     summarise(Mean = mean(Value, na.rm = TRUE))
 
-tinydata %>% write.table(file = "tiny dataset.txt", row.names = FALSE)
+tidydata %>% write.table(file = "tidy dataset.txt", row.names = FALSE)
 

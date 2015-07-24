@@ -66,7 +66,7 @@ The R script called run_analysis.R does the following to obtain and tidy the dat
 
 A detailed description of what the cleaning script does is provided in the [README document](README.md)
 
-##Description of the variables in the 'tiny dataset.txt' file
+##Description of the variables in the 'tidy dataset.txt' file
 We provide here a general description of the file including:
  - Dimensions of the dataset
  - Summary of the data
