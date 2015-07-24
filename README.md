@@ -19,7 +19,7 @@ source('run_analysis.R')
 The script get the zip file from https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip. If the zip file already exist, it is not downloaded again.
 
 ###Output
-The file 'tiny dataset.txt' is created in the working directory. If the file already exists, it is overwritten.
+The file 'tidy dataset.txt' is created in the working directory. If the file already exists, it is overwritten.
 
 ###Process
 1. Downloads the file from the web if it does not exist.
@@ -85,7 +85,6 @@ dataset <- dataset %>%
     mutate(Subject = subjects$SubjectId, ActivityId = activity$ActivityId) %>% ...
   ```
 5. Uses descriptive activity names to name the activities in the data set, so activity label is added to activity id
-
   ```{r}
 ... %>% join(activityLabels, by = "ActivityId") %>% 
         select(Subject, Activity, 1:79) %>% ...
@@ -96,10 +95,10 @@ dataset <- dataset %>%
   ```
 7. Creates a second, independent tidy data set with the average of each feature for each activity and each subject.
   ```{r}
-tinydata <- dataset %>%
+tidydata <- dataset %>%
     group_by(Subject, Activity, Feature) %>%
     summarise(Mean = mean(Value, na.rm = TRUE))
 
-tinydata %>% write.table(file = "tiny dataset.txt", row.names = FALSE)
+tidydata %>% write.table(file = "tidy dataset.txt", row.names = FALSE)
   ```
 
