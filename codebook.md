@@ -85,12 +85,14 @@ We provide here a general description of the file including:
 Variable | Class | Values/Levels | Unit of measurement
 ---------|-------|---------------|---------------------
 Subject | integer | 1:30 | none
-Activity | Factor | WALKING
-WALKING_UPSTAIRS
-WALKING_DOWNSTAIRS
-SITTING
-STANDING
-LAYING | none
+Activity | Factor | WALKING | none
+                  : WALKING_UPSTAIRS
+                  : WALKING_DOWNSTAIRS
+                  : SITTING
+                  : STANDING
+                  : LAYING
+Feature | Factor | | none
+Mean    | number | [-1,1] | no specified in the raw data
 
 (you can easily use Rcode for this, just load the dataset and provide the information directly form the tidy data file)
 
